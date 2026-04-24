@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Mail, MapPin, MessageCircle, Phone, Clock } from "lucide-react";
+import { Mail, MapPin, MessageCircle, Phone, Clock, Instagram } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { Button } from "@/components/ui/button";
 
@@ -51,10 +51,33 @@ function ContactPage() {
               <Link to="/agendamento">Agendar horário</Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="rounded-full">
-              <a href="https://wa.me/5511988887777" target="_blank" rel="noreferrer">
-                <MessageCircle className="mr-2 h-4 w-4" /> WhatsApp
+              <a href="tel:+551198887777">
+                <Phone className="mr-2 h-4 w-4" /> Ligar agora
               </a>
             </Button>
+            <Button asChild size="lg" variant="outline" className="rounded-full">
+              <a href="mailto:ola@maisonbelle.com.br">
+                <Mail className="mr-2 h-4 w-4" /> E-mail
+              </a>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="rounded-full">
+              <a href="https://instagram.com/maisonbelle" target="_blank" rel="noreferrer">
+                <Instagram className="mr-2 h-4 w-4" /> Instagram
+              </a>
+            </Button>
+          </div>
+
+          <div className="rounded-3xl border border-accent/30 bg-gradient-hero p-6">
+            <div className="flex items-start gap-3">
+              <MessageCircle className="mt-1 h-5 w-5 text-accent" />
+              <div>
+                <p className="font-display text-lg text-foreground">Atendimento instantâneo</p>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  Tem dúvidas sobre serviços ou preços? Fale com a <strong>Belle</strong>, nossa
+                  assistente virtual — clique no botão dourado no canto inferior direito da tela.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
