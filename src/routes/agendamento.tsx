@@ -17,7 +17,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { brl, categoryLabel, minutesToLabel } from "@/lib/format";
 import { createBooking, getBusySlots } from "@/utils/booking.functions";
 import { cn } from "@/lib/utils";
-import { serviceImage } from "@/lib/serviceImages";
+import { serviceImageByCategory } from "@/lib/serviceImages";
 
 export const Route = createFileRoute("/agendamento")({
   validateSearch: (search: Record<string, unknown>) => ({
@@ -338,7 +338,7 @@ function BookingPage() {
                           )}
                         >
                           <img
-                            src={s.image_url || serviceImage(s.category)}
+                            src={s.image_url || serviceImageByCategory[s.category]}
                             alt={s.name}
                             className="h-20 w-20 shrink-0 rounded-xl object-cover"
                           />
