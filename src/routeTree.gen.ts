@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as ServicosRouteImport } from './routes/servicos'
 import { Route as ProfissionaisRouteImport } from './routes/profissionais'
 import { Route as DepoimentosRouteImport } from './routes/depoimentos'
+import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as IndexRouteImport } from './routes/index'
 
 const ServicosRoute = ServicosRouteImport.update({
@@ -29,6 +30,11 @@ const DepoimentosRoute = DepoimentosRouteImport.update({
   path: '/depoimentos',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContatoRoute = ContatoRouteImport.update({
+  id: '/contato',
+  path: '/contato',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -37,12 +43,14 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contato': typeof ContatoRoute
   '/depoimentos': typeof DepoimentosRoute
   '/profissionais': typeof ProfissionaisRoute
   '/servicos': typeof ServicosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contato': typeof ContatoRoute
   '/depoimentos': typeof DepoimentosRoute
   '/profissionais': typeof ProfissionaisRoute
   '/servicos': typeof ServicosRoute
@@ -50,20 +58,28 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contato': typeof ContatoRoute
   '/depoimentos': typeof DepoimentosRoute
   '/profissionais': typeof ProfissionaisRoute
   '/servicos': typeof ServicosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/depoimentos' | '/profissionais' | '/servicos'
+  fullPaths: '/' | '/contato' | '/depoimentos' | '/profissionais' | '/servicos'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/depoimentos' | '/profissionais' | '/servicos'
-  id: '__root__' | '/' | '/depoimentos' | '/profissionais' | '/servicos'
+  to: '/' | '/contato' | '/depoimentos' | '/profissionais' | '/servicos'
+  id:
+    | '__root__'
+    | '/'
+    | '/contato'
+    | '/depoimentos'
+    | '/profissionais'
+    | '/servicos'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContatoRoute: typeof ContatoRoute
   DepoimentosRoute: typeof DepoimentosRoute
   ProfissionaisRoute: typeof ProfissionaisRoute
   ServicosRoute: typeof ServicosRoute
@@ -92,6 +108,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DepoimentosRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contato': {
+      id: '/contato'
+      path: '/contato'
+      fullPath: '/contato'
+      preLoaderRoute: typeof ContatoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -104,6 +127,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContatoRoute: ContatoRoute,
   DepoimentosRoute: DepoimentosRoute,
   ProfissionaisRoute: ProfissionaisRoute,
   ServicosRoute: ServicosRoute,
