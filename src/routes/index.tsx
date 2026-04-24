@@ -64,9 +64,9 @@ function HomePage() {
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg" className="rounded-full px-8 border-primary/30 hover:bg-primary/5">
-                <a href="https://wa.me/5511988887777" target="_blank" rel="noreferrer">
-                  <MessageCircle className="mr-2 h-4 w-4" /> Falar no WhatsApp
-                </a>
+                <Link to="/contato">
+                  <MessageCircle className="mr-2 h-4 w-4" /> Falar conosco
+                </Link>
               </Button>
             </div>
 
