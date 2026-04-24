@@ -13,6 +13,7 @@ import { Route as ServicosRouteImport } from './routes/servicos'
 import { Route as ProfissionaisRouteImport } from './routes/profissionais'
 import { Route as DepoimentosRouteImport } from './routes/depoimentos'
 import { Route as ContatoRouteImport } from './routes/contato'
+import { Route as AgendamentoRouteImport } from './routes/agendamento'
 import { Route as IndexRouteImport } from './routes/index'
 
 const ServicosRoute = ServicosRouteImport.update({
@@ -35,6 +36,11 @@ const ContatoRoute = ContatoRouteImport.update({
   path: '/contato',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AgendamentoRoute = AgendamentoRouteImport.update({
+  id: '/agendamento',
+  path: '/agendamento',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -43,6 +49,7 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/agendamento': typeof AgendamentoRoute
   '/contato': typeof ContatoRoute
   '/depoimentos': typeof DepoimentosRoute
   '/profissionais': typeof ProfissionaisRoute
@@ -50,6 +57,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/agendamento': typeof AgendamentoRoute
   '/contato': typeof ContatoRoute
   '/depoimentos': typeof DepoimentosRoute
   '/profissionais': typeof ProfissionaisRoute
@@ -58,6 +66,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/agendamento': typeof AgendamentoRoute
   '/contato': typeof ContatoRoute
   '/depoimentos': typeof DepoimentosRoute
   '/profissionais': typeof ProfissionaisRoute
@@ -65,12 +74,25 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/contato' | '/depoimentos' | '/profissionais' | '/servicos'
+  fullPaths:
+    | '/'
+    | '/agendamento'
+    | '/contato'
+    | '/depoimentos'
+    | '/profissionais'
+    | '/servicos'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contato' | '/depoimentos' | '/profissionais' | '/servicos'
+  to:
+    | '/'
+    | '/agendamento'
+    | '/contato'
+    | '/depoimentos'
+    | '/profissionais'
+    | '/servicos'
   id:
     | '__root__'
     | '/'
+    | '/agendamento'
     | '/contato'
     | '/depoimentos'
     | '/profissionais'
@@ -79,6 +101,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AgendamentoRoute: typeof AgendamentoRoute
   ContatoRoute: typeof ContatoRoute
   DepoimentosRoute: typeof DepoimentosRoute
   ProfissionaisRoute: typeof ProfissionaisRoute
@@ -115,6 +138,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContatoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/agendamento': {
+      id: '/agendamento'
+      path: '/agendamento'
+      fullPath: '/agendamento'
+      preLoaderRoute: typeof AgendamentoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -127,6 +157,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AgendamentoRoute: AgendamentoRoute,
   ContatoRoute: ContatoRoute,
   DepoimentosRoute: DepoimentosRoute,
   ProfissionaisRoute: ProfissionaisRoute,
