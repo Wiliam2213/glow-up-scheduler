@@ -29,16 +29,21 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Maison Belle — Salão de Beleza Premium" },
+      { name: "description", content: "Realce sua beleza com quem entende de você. Cabelo, unhas, maquiagem e estética em um espaço pensado para o seu bem-estar." },
+      { name: "author", content: "Maison Belle" },
+      { property: "og:title", content: "Maison Belle — Salão de Beleza Premium" },
+      { property: "og:description", content: "Cabelo, unhas, maquiagem e estética em um espaço pensado para o seu bem-estar." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap",
+      },
       {
         rel: "stylesheet",
         href: appCss,
